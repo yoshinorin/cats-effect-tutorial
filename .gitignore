@@ -1,0 +1,51 @@
+# General
+*.class
+*.log
+**/logs/**
+*.gz
+**/node_modules/*
+.env
+.bloop
+.metals
+metals.sbt
+
+# sbt specific
+dist/*
+**/target
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.bsp/
+
+# Scala-IDE specific
+.scala_dependencies
+.classpath
+.project
+.cache
+.settings
+.vscode
+*.code-workspace
+
+# IntelliJ specific
+.idea/
+.idea_modules/
+
+# Documentation
+docs/api/dist
+index.html
+
+# Docker
+docker/data
+docker/config
+tmpdata
+
+# Artifacts
+*.jar
+
+# Others
+memo/
+null/
+
+# Artifacts
+*.jar
