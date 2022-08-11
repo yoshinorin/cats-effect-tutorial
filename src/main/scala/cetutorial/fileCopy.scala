@@ -4,7 +4,12 @@ import cats.effect.{IO, Resource}
 import java.io._
 
 object fileCopy {
-  def copy(origin: File, destination: File): IO[Long] = ???
+  def copy(origin: File, destination: File): IO[Long] =
+    inputOutputStreams(origin, destination).use { case(in, out) =>
+      transfer(in, out)
+    }
+
+  def transfer(origin: InputStream, destination: OutputStream): IO[Long] = ???
 
   def inputStream(f: File): Resource[IO, FileInputStream] = {
     Resource.make {
