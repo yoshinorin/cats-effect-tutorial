@@ -33,7 +33,9 @@ object fileCopy {
 
   def transmit(origin: InputStream, destination: OutputStream, buffer: Array[Byte], acc: Long): IO[Long] = {
     for {
+      // blocking でアクションを作成している（入出力の場合は通常のIOよりこちらの方がよい）
       amount <- IO.blocking(origin.read(buffer, 0, buffer.size))
+      // for内包表記を用いたループ
       count  <- if(amount > -1) IO.blocking(destination.write(buffer, 0, amount)) >> transmit(origin, destination, buffer, acc + amount)
                else IO.pure(acc)
     } yield count
